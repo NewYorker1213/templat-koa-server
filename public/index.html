@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">hello world</div>
+    <form
+      id="myForm"
+      action="http://127.0.0.1:3000/api/test"
+      enctype="multipart/form-data"
+    >
+      <input type="text" name="username" />
+      <input type="text" name="password" />
+      <input type="submit" name="hh" />
+    </form>
+    <script>
+      const myForm = document.getElementById("myForm");
+      myForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        console.log("this", this);
+        var formData = new FormData(this);
+        // // formData.append("username", myForm.elements["username"].value);
+        // // formData.append("password", myForm.elements["password"].value);
+        // console.log("formData", formData);
+        // 使用 Fetch API 发送 POST 请求到服务器
+        fetch(this.action, {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.text();
+            }
+            throw new Error("Network response was not ok.");
+          })
+          .then((data) => {
+            console.log(data);
+            // 请求成功后可以在这里处理返回的数据
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            // 请求失败后可以在这里处理错误
+          });
+      });
+    </script>
+  </body>
+</html>
