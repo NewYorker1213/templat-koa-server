@@ -1,0 +1,19 @@
+# 忽略node_modules文件夹
+node_modules/
+
+# 忽略构建输出文件夹
+dist/
+
+# 忽略覆盖率报告文件夹
+coverage/
+
+# 忽略编辑器生成的临时文件
+*~
+*.swp
+*.swo
+
+# 忽略编译后的CSS文件
+# *.css
+
+# 忽略编译后的JavaScript文件
+# *.js
